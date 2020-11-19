@@ -1,0 +1,7 @@
+Camera <- read.table("./data/cameras.csv",sep=",",header =TRUE)
+head(Camera)
+View(Camera)
+library(xlsx)
+Pasta <- read.xlsx("Pasta1.xlsx",sheetIndex=1,header = TRUE)
+head(Pasta)
+View(Pasta)
