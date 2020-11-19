@@ -1,2 +1,2 @@
-read.table("Baltimore_Fixed_speed_Cameras.csv",sep=",",header =TRUE)
-
+Camera <- read.table("./data/cameras.csv",sep=",",header =TRUE)
+head(Camera)
