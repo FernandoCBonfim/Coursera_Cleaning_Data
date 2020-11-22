@@ -23,3 +23,13 @@ rootNode[[1]][[1]][[1]][[1]]
 library(jsonlite)
 jsonData <- fromJSON("https://api.github.com/users/jtleek/repos")
 names(jsonData)
+
+con = url("http://scholar.google.com/citations?user=HI-I6C0AAAAJ&hl=en") 
+htmlCode = readLines(con) 
+close(con) 
+head(htmlCode)
+
+library(XML)
+url <- "http://scholar.google.com/citations?user=HI-I6C0AAAAJ&hl=en" 
+html <- htmlTreeParse(url,useInternalNodes = T) 
+xpathSApply(html, "//title'%", xmlValue)
