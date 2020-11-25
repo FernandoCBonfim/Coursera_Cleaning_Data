@@ -27,9 +27,14 @@ names(jsonData)
 con = url("http://scholar.google.com/citations?user=HI-I6C0AAAAJ&hl=en") 
 htmlCode = readLines(con) 
 close(con) 
-head(htmlCode)
+View(htmlCode)
 
-library(XML)
-url <- "http://scholar.google.com/citations?user=HI-I6C0AAAAJ&hl=en" 
-html <- htmlTreeParse(url,useInternalNodes = T) 
-xpathSApply(html, "//title'%", xmlValue)
+if(!file.exists("./data2")) {dir.create("./data2")}
+fileUrl <- "https://data.baltimorecity.gov/api/views/k5ry-ef3g/rows.csv?accessType=DOWNLOAD"
+download.file(fileUrl, destfile="./data2/restaurants.csv")
+
+restData <- read.csv("./data2/restaurants.csv")
+restData$near <- restData$neighborhood %in% c("Roland Park","Homeland")
+restData$near <- restData$neighborhood=="Roland Park" | restData$neighborhood=="Homeland"
+
+table(restData$near)
