@@ -38,3 +38,10 @@ restData$near <- restData$neighborhood %in% c("Roland Park","Homeland")
 restData$near <- restData$neighborhood=="Roland Park" | restData$neighborhood=="Homeland"
 
 table(restData$near)
+
+fileurl <- "https://data.baltimorecity.gov/api/views/dz54-2aru/rows.csv?accessType=DOWNLOAD"
+download.file(fileurl, destfile="./data/cameras.csv")
+cameraData <- read.csv("./data/cameras.csv")
+names(cameraData)
+tolower(names(cameraData))
+View(cameraData)
